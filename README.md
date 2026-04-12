@@ -13,6 +13,10 @@ Unlike generic chatbots, DataWitness never lets the AI do the math. The LLM tran
 
 **Who it's for:** Business analysts, managers, and non-technical users who need to trust the data answers they act on.
 
+![DataWitness Landing Page](assets/screenshots/landing.png)
+
+> **See the full visual walkthrough:** [docs/walkthrough.md](docs/walkthrough.md)
+
 ---
 
 ## Features
