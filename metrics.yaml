@@ -1,0 +1,88 @@
+# DataWitness — Metric Dictionary (Semantic Layer)
+# Every metric used in the app is defined here.
+# The Trust Layer reads this file to attach definitions to every answer.
+# Edit this file to match your dataset's actual column names.
+
+metrics:
+  sales:
+    column: "Sales"
+    definition: "Total revenue from orders before any deductions. Sum of all individual order sale amounts."
+    unit: "USD"
+    aggregation: "sum"
+
+  profit:
+    column: "Profit"
+    definition: "Net profit after cost of goods sold. Sales minus product cost. Can be negative for loss-making orders."
+    unit: "USD"
+    aggregation: "sum"
+
+  orders:
+    column: "Order ID"
+    definition: "Count of unique orders placed. Each Order ID represents one customer transaction."
+    unit: "count"
+    aggregation: "count_distinct"
+
+  quantity:
+    column: "Quantity"
+    definition: "Total number of product units sold across all orders in the selected period."
+    unit: "units"
+    aggregation: "sum"
+
+  discount:
+    column: "Discount"
+    definition: "Average discount rate applied to orders. Expressed as a decimal (0.2 = 20% discount)."
+    unit: "ratio"
+    aggregation: "mean"
+
+  profit_margin:
+    column: "derived"
+    definition: "Profit as a percentage of Sales. Calculated as (Profit / Sales) * 100. Indicates business efficiency."
+    unit: "percent"
+    aggregation: "derived"
+
+dimensions:
+  region:
+    column: "Region"
+    values: ["West", "East", "Central", "South"]
+
+  category:
+    column: "Category"
+    values: ["Furniture", "Office Supplies", "Technology"]
+
+  segment:
+    column: "Segment"
+    values: ["Consumer", "Corporate", "Home Office"]
+
+  state:
+    column: "State"
+
+  city:
+    column: "City"
+
+  product:
+    column: "Product Name"
+
+  sub_category:
+    column: "Sub-Category"
+
+time:
+  order_date:
+    column: "Order Date"
+    format: "%m/%d/%Y"
+
+# Relative time filters supported by the deterministic parser in
+# src/data_loader.py :: apply_time_filter. The Intent Router (query_engine.py)
+# is prompted to emit one of these `type` values as a TIME_FILTER directive
+# when the user question contains a relative time phrase. The anchor date is
+# the latest date present in the dataset, not wall-clock today.
+time_filters:
+  last_week:      "7 days prior to the anchor date"
+  this_week:      "Monday of the anchor-week through anchor date"
+  last_month:     "Full previous calendar month relative to the anchor date"
+  this_month:     "First of the anchor month through anchor date"
+  mtd:            "Alias of this_month"
+  last_year:      "Full previous calendar year"
+  this_year:      "Jan 1 of the anchor year through anchor date"
+  ytd:            "Alias of this_year"
+  last_n_days:    "Last N days relative to the anchor date (requires n)"
+  last_n_months:  "Last N calendar months relative to the anchor date (requires n)"
