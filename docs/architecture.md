@@ -37,12 +37,6 @@ This eliminates hallucination on numerical answers — the single biggest failur
 - Sub-second inference on Llama 3.1 70B
 - No credit card required for initial setup
 
-### Why Streamlit instead of Next.js / React?
-- Native Python — no context switching for the data/ML team
-- Split-column layout available out of the box
-- One-command deployment to Streamlit Cloud
-- Faster to iterate in a 36-hour hackathon
-
 ### Why YAML for the metric dictionary?
 - Human-readable and editable without code
 - Judges can open `metrics.yaml` directly in the repo and verify definitions
